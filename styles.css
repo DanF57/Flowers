@@ -12,7 +12,7 @@
 
 html, body {
   height: 100vh;  /* Usa 100vh para ocupar toda la pantalla */
-  width: 100vw;
+  max-width: 100vw;
   min-height: 100dvh;   
 }
 
@@ -33,6 +33,7 @@ body {
   text-align: center;
   position: absolute;
   bottom: 0;
+  pointer-events: none;
 }
 
 .x1 {
@@ -216,12 +217,105 @@ http://static.indigoimages.ca/2016/shop/113439_img25_twotoneheart.png) no-repeat
   -webkit-animation: fadeInUp 1.5s ease-out forwards;
 }
 
-.general-span{
-  font-size: 30px;
+.general-span {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  width: 300px;
+  z-index: 1000;
+  opacity: 0;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.general-span.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.popup-overlay.show {
+  opacity: 1;
+}
+
+.button-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.choice-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+#yesButton {
+  background: #ffffff;
+  color: #ff758c;
+}
+
+#yesButton:hover {
+  background: #ff4d6d;
+  color: white;
+}
+
+#noButton {
+  background: #ff4d6d;
+  color: white;
+}
+
+#noButton:hover {
+  background: #ffffff;
+  color: #ff4d6d;
+}
+
+.expanding {
+  font-size: 24px;
+  padding: 20px 40px;
+}
+
+.full-size {
+  font-size: 32px;
+  padding: 30px 60px;
+  transition: all 0.3s ease;
+}
+
+
+a{
+  text-decoration: none;
 }
 
 .red-text{
   color: rgb(161, 6, 6);
+  font-size: 24px;
   text-shadow: none;
 }
 
@@ -260,6 +354,10 @@ http://static.indigoimages.ca/2016/shop/113439_img25_twotoneheart.png) no-repeat
   -webkit-animation: text-float 3s ease-in-out infinite;
 }
 
+.small-text{
+  font-size: 12px;
+}
+
 @media screen and (max-width: 600px) {
   .text {
     display: flex;
@@ -271,6 +369,9 @@ http://static.indigoimages.ca/2016/shop/113439_img25_twotoneheart.png) no-repeat
     margin-top: 1rem;
   }
 
+  .small-text{
+    font-size: 8px;
+  }
   .text-left,
   .text-right {
     text-align: center;
@@ -278,7 +379,7 @@ http://static.indigoimages.ca/2016/shop/113439_img25_twotoneheart.png) no-repeat
     right: 0;
   }
   .text-right{
-    top: 14rem;
+    top: 13rem;
   }
 }
 
@@ -296,6 +397,7 @@ http://static.indigoimages.ca/2016/shop/113439_img25_twotoneheart.png) no-repeat
 .flowers {
   position: relative;
   transform: scale(0.9);
+  pointer-events: auto;
 }
 
 .flower {
@@ -304,31 +406,48 @@ http://static.indigoimages.ca/2016/shop/113439_img25_twotoneheart.png) no-repeat
   transform-origin: bottom center;
   z-index: 10;
   --fl-speed: 0.8s;
+  pointer-events: auto;
 }
 .flower--1 {
   animation: moving-flower-1 4s linear infinite;
+  pointer-events: auto;
+  z-index: 15;
 }
 .flower--1 .flower__line {
   height: 70vmin;
   animation-delay: 0.3s;
+  pointer-events: auto;
+  z-index: 15;
 }
 .flower--1 .flower__line__leaf--1 {
   animation: blooming-leaf-right var(--fl-speed) 1.6s backwards;
+  pointer-events: auto;
+  z-index: 15;
 }
 .flower--1 .flower__line__leaf--2 {
   animation: blooming-leaf-right var(--fl-speed) 1.4s backwards;
+  pointer-events: auto;
+  z-index: 15;
 }
 .flower--1 .flower__line__leaf--3 {
   animation: blooming-leaf-left var(--fl-speed) 1.2s backwards;
+  pointer-events: auto;
+  z-index: 15;
 }
 .flower--1 .flower__line__leaf--4 {
   animation: blooming-leaf-left var(--fl-speed) 1s backwards;
+  pointer-events: auto;
+  z-index: 15;
 }
 .flower--1 .flower__line__leaf--5 {
   animation: blooming-leaf-right var(--fl-speed) 1.8s backwards;
+  pointer-events: auto;
+  z-index: 15;
 }
 .flower--1 .flower__line__leaf--6 {
   animation: blooming-leaf-left var(--fl-speed) 2s backwards;
+  pointer-events: auto;
+  z-index: 15;
 }
 .flower--2 {
   left: 50%;

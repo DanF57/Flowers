@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <title>San Valentín</title>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     onload = () => {
     const c = setTimeout(() => {
@@ -16,18 +17,75 @@
       clearTimeout(c);
     }, 1000);
   };
+
+  document.addEventListener("DOMContentLoaded", function () {
+  const flower = document.querySelector(".flower__leafs--1");
+  const popup = document.querySelector(".general-span");
+  const overlay = document.querySelector(".popup-overlay");
+  const yesButton = document.getElementById("yesButton");
+  const noButton = document.getElementById("noButton");
+
+  let yesSize = 16; // Tamaño inicial del botón "Sí"
+  
+  flower.addEventListener("click", function () {
+    popup.classList.add("show");
+    overlay.classList.add("show");
+    popup.style.display = "block";
+    overlay.style.display = "block";
+  });
+
+  noButton.addEventListener("click", function () {
+    yesSize += 10; // Aumenta el tamaño del botón "Sí"
+
+    if (yesSize >= 40) {
+      yesButton.classList.add("full-size"); // Hace que el botón "Sí" se agrande por completo
+      noButton.style.display = "none"; // Oculta el botón "No"
+    } else {
+      yesButton.style.fontSize = yesSize + "px";
+      yesButton.style.padding = yesSize / 2 + "px " + yesSize + "px";
+    }
+  });
+
+  yesButton.addEventListener("click", function () {
+    Swal.fire({
+      title: "¡Sabía que dirías que sí! ❤️",
+      imageUrl: "image.webp",
+      imageWidth: 300,
+      imageAlt: "Imagen especial",
+      confirmButtonText: "Espero te haya gustado <3",
+      background: "#fff",
+      color: "#333",
+    })
+  });
+
+  overlay.addEventListener("click", function () {
+    popup.style.display = "none";
+    overlay.style.display = "none";
+  });
+
+});
+
 </script>
 <body class="not-loaded">
     <div class="night"></div>
     <div class="text">
-        <p class="text-left">Mi amor, este 14 de febrero me encantaría <br>
-          compartir un día lleno <br> de momentos especiales a tu lado. <br> <br>
-          <span class="general-span">¿Quieres ser mi <span class="red-text">San Valentín</span>?</span><br></p>
-        <p class="text-right">Aprovecho también para <br> decirte que te amo más
-          de lo que<br> las palabras pueden expresar,<br> y que cada día sin ti <br> se siente incompleto. <br>
-          <br>
-          Te extraño muchísimo, mi vida</p>
+        <p class="text-left">Niña hermosa, se que mi oportunidad <br>
+          ya pasó, pero me hiciste muy feliz <br> y llegaste a ser muy especial para mi. <br> <br> Hay muchas cosas que <br> quiero decirte y contarte.
+        </p>
+        <p class="text-right">Empezando por lo mucho que <br>
+          te extraño todos los días. <br><br> Pero debo hacerte una pregunta <br> para poder continuar<br>
+          <span class="small-text">*clickea la flor del centro*</span><br> 
+        </p>
     </div>
+    <div class="popup-overlay"></div>
+      <div class="general-span">
+        <p>¿Quieres ser mi <span class="red-text">San Valentín?</span></p>
+        <div class="button-container">
+          <button id="yesButton" class="choice-button">Sí</button>
+          <button id="noButton" class="choice-button">No</button>
+      </div>
+    </div>
+
     <div class="flowers">
       <div class="flower flower--1">
         <div class="flower__leafs flower__leafs--1">
