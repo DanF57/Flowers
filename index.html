@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,83 +7,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-    <title>San Valentín</title>
+    <title>San Valentín 💕</title>
 </head>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    onload = () => {
-    const c = setTimeout(() => {
-      document.body.classList.remove("not-loaded");
-      clearTimeout(c);
-    }, 1000);
-  };
-
-  document.addEventListener("DOMContentLoaded", function () {
-  const flower = document.querySelector(".flower__leafs--1");
-  const popup = document.querySelector(".general-span");
-  const overlay = document.querySelector(".popup-overlay");
-  const yesButton = document.getElementById("yesButton");
-  const noButton = document.getElementById("noButton");
-
-  let yesSize = 16; // Tamaño inicial del botón "Sí"
-  
-  flower.addEventListener("click", function () {
-    popup.classList.add("show");
-    overlay.classList.add("show");
-    popup.style.display = "block";
-    overlay.style.display = "block";
-  });
-
-  noButton.addEventListener("click", function () {
-    yesSize += 10; // Aumenta el tamaño del botón "Sí"
-
-    if (yesSize >= 40) {
-      yesButton.classList.add("full-size"); // Hace que el botón "Sí" se agrande por completo
-      noButton.style.display = "none"; // Oculta el botón "No"
-    } else {
-      yesButton.style.fontSize = yesSize + "px";
-      yesButton.style.padding = yesSize / 2 + "px " + yesSize + "px";
-    }
-  });
-
-  yesButton.addEventListener("click", function () {
-    Swal.fire({
-      title: "¡Sabía que dirías que sí! ❤️",
-      imageUrl: "image.webp",
-      imageWidth: 300,
-      imageAlt: "Imagen especial",
-      confirmButtonText: "Espero te haya gustado <3",
-      background: "#fff",
-      color: "#333",
-    })
-  });
-
-  overlay.addEventListener("click", function () {
-    popup.style.display = "none";
-    overlay.style.display = "none";
-  });
-
-});
-
-</script>
 <body class="not-loaded">
+    <!-- Botón de música -->
+    <button id="musicToggle" class="music-toggle">
+        <span class="music-icon">🎵</span>
+    </button>
+
+    <!-- Audio de fondo -->
+    <audio id="backgroundMusic" loop>
+        <!-- Puedes reemplazar con tu canción favorita -->
+        <source src="romantic-music.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="night"></div>
+    
+    <!-- Contenedor de pétalos -->
+    <div class="petals-container"></div>
+
+    <!-- Contenedor de confetti -->
+    <canvas id="confetti-canvas"></canvas>
+
     <div class="text">
-        <p class="text-left">Niña hermosa, se que mi oportunidad <br>
-          ya pasó, pero me hiciste muy feliz <br> y llegaste a ser muy especial para mi. <br> <br> Hay muchas cosas que <br> quiero decirte y contarte.
-        </p>
-        <p class="text-right">Empezando por lo mucho que <br>
-          te extraño todos los días. <br><br> Pero debo hacerte una pregunta <br> para poder continuar<br>
+        <p class="text-left">Niña hermosa hoy quiero celebrar <br> tener una persona que llena mi corazón con amor <br> 
+          Que me hace feliz todos los días<br>En quien pienso cuando escucho música romántica <br>
+          y es que no hago más que querer abrazarte todo el día. <br> Por eso hoy me haría muy feliz si aceptas...<br>
           <span class="small-text">*clickea la flor del centro*</span><br> 
         </p>
     </div>
+    
     <div class="popup-overlay"></div>
-      <div class="general-span">
+    <div class="general-span">
         <p>¿Quieres ser mi <span class="red-text">San Valentín?</span></p>
         <div class="button-container">
-          <button id="yesButton" class="choice-button">Sí</button>
+          <button id="yesButton" class="choice-button">Sí ❤️</button>
           <button id="noButton" class="choice-button">No</button>
-      </div>
+        </div>
     </div>
 
     <div class="flowers">
@@ -103,7 +63,6 @@
           <div class="flower__light flower__light--6"></div>
           <div class="flower__light flower__light--7"></div>
           <div class="flower__light flower__light--8"></div>
-  
         </div>
         <div class="flower__line">
           <div class="flower__line__leaf flower__line__leaf--1"></div>
@@ -131,7 +90,6 @@
           <div class="flower__light flower__light--6"></div>
           <div class="flower__light flower__light--7"></div>
           <div class="flower__light flower__light--8"></div>
-  
         </div>
         <div class="flower__line">
           <div class="flower__line__leaf flower__line__leaf--1"></div>
@@ -157,7 +115,6 @@
           <div class="flower__light flower__light--6"></div>
           <div class="flower__light flower__light--7"></div>
           <div class="flower__light flower__light--8"></div>
-  
         </div>
         <div class="flower__line">
           <div class="flower__line__leaf flower__line__leaf--1"></div>
@@ -266,9 +223,6 @@
         <div class="grow-ans" style="--d:3s">
           <div class="leaf leaf--0"></div>
         </div>
-        <!-- <div class="grow-ans" style="--d:2.2s">
-          <div class="leaf leaf--1"></div>
-        </div> -->
         <div class="grow-ans" style="--d:3.4s">
           <div class="leaf leaf--2"></div>
         </div>
@@ -382,13 +336,17 @@
         </div>
       </div>
     </div>
+    
     <div class="wrapper">
       <div class="heart x1"></div>
       <div class="heart x2"></div>
       <div class="heart x3"></div>
       <div class="heart x4"></div>
-      <div class="heart x5"> </div>
+      <div class="heart x5"></div>
       <div class="altheart x6"></div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
 </body>
 </html>
